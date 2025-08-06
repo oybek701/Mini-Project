@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Data List</h1>
+      <a href="{% url 'data_create' %}" class="btn btn-primary mb-2">+ data create</a>
+      {% for group in groups %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">name</th>
+              <th scope="col">description</th>
+              <th scope="col">date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ group.name }}</td>
+              <td>{{ group.description }}</td>
+              <td>{{ group.date }}</td>
+              <td>
+                <a href="{% url 'data_update' group.pk %}" class="btn btn-warning">Update</a>
+              </td>
+              <td>
+                <a href="{% url 'data_delete' group.pk %} " class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      {% empty %}
+        <h3>No Data</h3>
+      {% endfor %}
+    </div>
+  </body>
+</html>
