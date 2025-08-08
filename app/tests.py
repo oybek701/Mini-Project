@@ -1,3 +1,3 @@
-from django.test import TestCase
+from django.test import TestCasef
 
 # Create your tests here.
